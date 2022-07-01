@@ -13,8 +13,21 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const verifyMailConnection = async () => {
+  await new Promise((resolve, reject) => {
+    transporter.verify(function (error, success) {
+        if (error) {
+            console.log(error);
+            reject(error);
+        } else {
+            console.log('Servidor listo para enviar correos :D');
+            resolve(success);
+        }
+    });
+});
+};
 
-const sendMail = (from, to, subject, message) => {
+const sendMail = async (from, to, subject, message) => {
   let mailOptions = {
     from: from,
     to: to,
@@ -22,15 +35,19 @@ const sendMail = (from, to, subject, message) => {
     text: message,
   };
 
-  transporter.sendMail(mailOptions, (err, data) => {
-    if (err) {
-      console.log(err);
-      throw new Error('No se pudo enviar el correo');
-    } 
-    if (data) {
-      console.log(data);
-      return data;
-    } 
+  await verifyMailConnection();
+
+  await new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, (err, data) => {
+      if (err) {
+        console.log(err);
+        reject('No se pudo enviar el correo');
+      } 
+      if (data) {
+        console.log(data);
+        resolve(data);
+      } 
+    });
   });
 };
 

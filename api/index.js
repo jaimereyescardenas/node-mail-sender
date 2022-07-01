@@ -9,10 +9,10 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
-app.post("/api/sendmail", (req, res) => {
+app.post("/api/sendmail", async (req, res) => {
   const { from, to, subject, message } = req.body;
   try {
-    sendMail(from, to, subject, message);
+    await sendMail(from, to, subject, message);
     const successMessage = {
       success: true,
       message: "El correo se ha enviado correctamente!",
