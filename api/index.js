@@ -15,7 +15,7 @@ app.post("/api/sendmail", (req, res) => {
     sendMail(from, to, subject, message);
     const successMessage = {
       success: true,
-      message: "El correo se ha enviado correctamente",
+      message: "El correo se ha enviado correctamente!",
       code: 200,
     };
     res.send(successMessage);
