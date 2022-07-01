@@ -35,7 +35,7 @@ const sendMail = async (from, to, subject, message) => {
     text: message,
   };
 
-  await verifyMailConnection();
+  // await verifyMailConnection();
 
   await new Promise((resolve, reject) => {
     transporter.sendMail(mailOptions, (err, data) => {
