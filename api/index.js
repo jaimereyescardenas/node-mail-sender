@@ -29,6 +29,4 @@ app.post("/api/sendmail", (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor funcionando en el puerto ${PORT}`);
-});
+module.exports = app;
