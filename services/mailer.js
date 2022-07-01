@@ -4,8 +4,8 @@ const USER = process.env.USER || "";
 const PASSWORD = process.env.PASWORD || "";
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
+  host: "smtp-relay.sendinblue.com",
+  port: 587,
   secure: true,
   auth: {
     user: USER,
