@@ -6,12 +6,13 @@ const PASSWORD = process.env.PASWORD || "";
 const transporter = nodemailer.createTransport({
   host: "smtp-relay.sendinblue.com",
   port: 587,
-  secure: true,
+  secure: false,
   auth: {
     user: USER,
     pass: PASSWORD,
   },
 });
+
 
 const sendMail = (from, to, subject, message) => {
   let mailOptions = {
