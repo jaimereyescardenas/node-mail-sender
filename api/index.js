@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const { sendMail } = require("./mailer");
+const { sendMail } = require("../services/mailer");
 
 const app = express();
 
